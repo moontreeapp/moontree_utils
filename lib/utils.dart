@@ -13,4 +13,5 @@ export 'random.dart';
 export 'search.dart';
 export 'string.dart';
 export 'transform.dart';
+export 'trigger.dart';
 export 'zips.dart';
