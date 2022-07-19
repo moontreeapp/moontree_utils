@@ -18,3 +18,10 @@ int randomInRange(int min, int max, [Random? generator]) =>
 /// return a (psuedo-)random item from the iterable
 int chooseAtRandom(Iterable items, [Random? generator]) =>
     items.toList()[(generator ?? Random()).nextInt(items.length)];
+
+/// given a string a deterministic random object is returned
+Random deterministicRandom(dynamic seed) => Random(seed.hashCode);
+
+/// provides a random int within range 0 - 2^32 which is the max possible range
+int maxRandomInt([dynamic seed]) =>
+    (seed != null ? deterministicRandom(seed) : Random()).nextInt(4294967296);
