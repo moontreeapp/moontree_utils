@@ -9,6 +9,7 @@ export 'future.dart';
 export 'hex.dart';
 export 'list.dart';
 export 'lock.dart';
+export 'pairing.dart';
 export 'random.dart';
 export 'search.dart';
 export 'string.dart';
