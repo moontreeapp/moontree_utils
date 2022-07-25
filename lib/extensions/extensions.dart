@@ -2,6 +2,7 @@ export 'double.dart';
 export 'int.dart';
 export 'iterable.dart';
 export 'list.dart';
+export 'map.dart';
 export 'object.dart';
 export 'set.dart';
 export 'string.dart';
