@@ -16,3 +16,8 @@ extension MinMaxExtension on Set<int> {
   /// returns the lowest int in the set
   int get min => reduce(math.min);
 }
+
+extension CombineAliasSetsExtension<T> on Set<T> {
+  Set<T> operator +(Set<T> other) => union(other);
+  Set<T> operator -(Set<T> other) => difference(other);
+}

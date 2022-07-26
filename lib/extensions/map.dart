@@ -18,3 +18,8 @@ extension SetOrUpdateOnMapExtension<TK, TV> on Map<TK, TV> {
     }
   }
 }
+
+extension GetOnMapExtension<TK, TV> on Map<TK, TV> {
+  TV? get(TK key, [TV? defaultValue]) =>
+      !containsKey(key) ? defaultValue : this[key];
+}
