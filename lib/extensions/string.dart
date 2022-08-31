@@ -8,8 +8,9 @@ import 'package:utils/string.dart' as strings;
 import 'package:utils/transform.dart';
 
 extension StringCapitalizationExtension on String {
-  String toCapitalizedWord() =>
-      1 < length ? substring(0, 1).toUpperCase() + substring(1) : toUpperCase();
+  String toCapitalizedWord() => 1 < length
+      ? substring(0, 1).toUpperCase() + substring(1).toLowerCase()
+      : toUpperCase();
 
   String toTitleCase({bool underscoresAsSpace = false}) =>
       replaceAll(RegExp(' +'), ' ')
