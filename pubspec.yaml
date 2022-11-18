@@ -1,5 +1,5 @@
 name: utils
-description: generic dart utilities shared
+description: generic dart utilities shared across moontree repos
 version: 1.0.0
 homepage: https://github.com/moontreeapp/utils
 
