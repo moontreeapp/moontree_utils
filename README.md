@@ -1,4 +1,4 @@
-Generic Dart Utilities shared across multiple repos.
+Generic Dart Utilities, made specifically to support multiple Moontree repos.
 
 ## Example
 
