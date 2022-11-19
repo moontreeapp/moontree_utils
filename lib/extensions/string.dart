@@ -68,8 +68,8 @@ extension StringNumericExtension on String {
       split('.').first,
       chars: strings.punctuation + strings.whiteSapce,
     );
-    if (text.length > 15) {
-      text = text.substring(0, 15);
+    if (text.length > 19) {
+      text = text.substring(0, 19);
     }
     if (text == '') {
       return 0;
