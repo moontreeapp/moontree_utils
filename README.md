@@ -3,11 +3,11 @@ Generic Dart Utilities, made specifically to support multiple Moontree repos.
 ## Example
 
 ```dart
-//import 'package:utils/utils.dart'; // everything
-//import 'package:utils/extensions/extensions.dart'; // all extensions
-import 'package:utils/extensions/int.dart'; 
-import 'package:utils/mixins.dart' show ToStringMixin;
-import 'package:utils/list.dart' show range;
+//import 'package:moontree_utils/utils.dart'; // everything
+//import 'package:moontree_utils/extensions/extensions.dart'; // all extensions
+import 'package:moontree_utils/extensions/int.dart'; 
+import 'package:moontree_utils/mixins.dart' show ToStringMixin;
+import 'package:moontree_utils/list.dart' show range;
 
 class Example with ToStringMixin {
   final String symbol;

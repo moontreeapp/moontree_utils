@@ -1,5 +1,5 @@
-import 'package:utils/transform.dart';
-import 'package:utils/extensions/extensions.dart';
+import 'package:moontree_utils/transform.dart';
+import 'package:moontree_utils/extensions/extensions.dart';
 
 extension IntReadableNumericExtension on int {
   String toCommaString({String comma = ','}) {

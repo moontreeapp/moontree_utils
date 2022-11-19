@@ -1,4 +1,4 @@
-import 'package:utils/extensions/extensions.dart';
+import 'package:moontree_utils/extensions/extensions.dart';
 
 extension DoubleReadableNumericExtension on double {
   String toCommaString() =>
