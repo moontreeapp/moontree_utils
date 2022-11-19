@@ -1,7 +1,7 @@
 /// divisibility of 0 is no decimal places, 1 is one.
 
 import 'package:moontree_utils/extensions/string.dart';
-import 'package:moontree_utils/string.dart';
+import 'package:moontree_utils/src/string.dart';
 
 int invertDivisibility(int divisibility) => (16 + 1) % (divisibility + 8 + 1);
 

@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:moontree_utils/exceptions.dart' show AlreadyListening;
+import 'package:moontree_utils/src/exceptions.dart' show AlreadyListening;
 
 typedef Listener<T> = void Function(T event);
 typedef Check<T> = bool Function(T event);

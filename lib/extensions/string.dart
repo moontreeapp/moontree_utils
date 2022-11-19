@@ -4,8 +4,8 @@ import 'dart:typed_data';
 import 'package:convert/convert.dart';
 import 'package:bs58/bs58.dart';
 
-import 'package:moontree_utils/string.dart' as strings;
-import 'package:moontree_utils/transform.dart';
+import 'package:moontree_utils/src/string.dart' as strings;
+import 'package:moontree_utils/src/transform.dart';
 
 extension StringCapitalizationExtension on String {
   String toCapitalizedWord() => 1 < length

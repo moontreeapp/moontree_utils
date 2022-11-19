@@ -1,6 +1,6 @@
-/// I think ravencoin_wallet validation makes this irrelevant.
+/// I think wallet_utils validation makes this irrelevant.
 
-import 'package:moontree_utils/string.dart';
+import 'package:moontree_utils/src/string.dart';
 
 bool rvnCondition(String address, {bool mainnet = true}) =>
     address.contains(RegExp(ravenBase58Regex(mainnet)));
