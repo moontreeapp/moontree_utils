@@ -6,8 +6,8 @@ Generic Dart Utilities, made specifically to support multiple Moontree repos.
 //import 'package:moontree_utils/moontree_utils.dart'; // everything
 //import 'package:moontree_utils/extensions/extensions.dart'; // all extensions
 import 'package:moontree_utils/extensions/int.dart'; 
-import 'package:moontree_utils/mixins.dart' show ToStringMixin;
-import 'package:moontree_utils/list.dart' show range;
+import 'package:moontree_utils/src/mixins.dart' show ToStringMixin;
+import 'package:moontree_utils/src/list.dart' show range;
 
 class Example with ToStringMixin {
   final String symbol;
