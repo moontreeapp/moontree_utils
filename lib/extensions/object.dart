@@ -10,3 +10,7 @@ extension DescribeEnum on Object {
     return description.substring(indexOfDot + 1);
   }
 }
+
+extension isInStuff on Object? {
+  bool isIn(Iterable x) => x.contains(this);
+}
