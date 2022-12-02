@@ -23,7 +23,7 @@ Timer doLater<T>(
 
 Future<void> simulateWait(String desc, [Duration? duration]) async {
   print('waiting on $desc...');
-  await Future.delayed(
+  await Future<void>.delayed(
       duration ?? Duration(milliseconds: Random().nextInt(10)));
   print('done $desc');
 }
