@@ -2,7 +2,7 @@ String whiteSapce = '  ';
 String punctuationProblematic = '`?:;"\'\\\$|/<>';
 String punctuationNonProblematic = '~.,-_';
 String punctuation =
-    punctuationProblematic + punctuationNonProblematic + '[]{}()=+*&^%#@!';
+    '$punctuationProblematic$punctuationNonProblematic[]{}()=+*&^%#@!';
 String punctuationMinusCurrency =
     punctuation.replaceAll('.', '').replaceAll(',', '');
 String alphanumeric = 'abcdefghijklmnopqrstuvwxyz12345674890';

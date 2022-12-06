@@ -1,11 +1,11 @@
 import 'dart:math' as math;
 
-extension RandomChoiceOnSetExtension on Set {
+extension RandomChoiceOnSetExtension on Set<dynamic> {
   /// returns a random element from the set
   dynamic get randomChoice => elementAt(math.Random().nextInt(length));
 
   /// returns a number from the set that is in the bottom half
-  int get randomChoiceBottomHalf {
+  dynamic get randomChoiceBottomHalf {
     var x = toList();
     x.sort();
     return x[math.Random().nextInt(length ~/ 2)];

@@ -15,7 +15,7 @@ class Example with ToStringMixin {
   Example(this.symbol);
 
   @override
-  List<Object?> get props => [symbol];
+  List<Object?> get props => <Object?>[symbol];
 
   @override
   List<String> get propNames => ['symbol'];

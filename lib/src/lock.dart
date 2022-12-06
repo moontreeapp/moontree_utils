@@ -16,14 +16,14 @@ class ReaderWriterLock {
   bool _isWritingOrWaitingToWrite = false;
 
   final List<Completer<void>> _writeQueue = <Completer<void>>[];
-  Completer<void> _readAfterWrite = Completer();
+  Completer<void> _readAfterWrite = Completer<void>();
 
   Future<T> lockScope<T>(
     T Function() callback, {
     required LockType lockType,
   }) async {
     lockType == LockType.write ? await enterWrite() : await enterRead();
-    var x = callback();
+    final T x = callback();
     lockType == LockType.write ? await exitWrite() : await exitRead();
     return x;
   }
@@ -33,22 +33,22 @@ class ReaderWriterLock {
     required LockType lockType,
   }) async {
     lockType == LockType.write ? await enterWrite() : await enterRead();
-    var x = await callback();
+    final T x = await callback();
     lockType == LockType.write ? await exitWrite() : await exitRead();
     return x;
   }
 
   Future<T> read<T>(T Function() fn) async =>
-      await lockScope(fn, lockType: LockType.read);
+      lockScope(fn, lockType: LockType.read);
 
   Future<T> write<T>(T Function() fn) async =>
-      await lockScope(fn, lockType: LockType.write);
+      lockScope(fn, lockType: LockType.write);
 
   Future<T> readFuture<T>(Future<T> Function() fn) async =>
-      await lockScopeFuture(fn, lockType: LockType.read);
+      lockScopeFuture(fn, lockType: LockType.read);
 
   Future<T> writeFuture<T>(Future<T> Function() fn) async =>
-      await lockScopeFuture(fn, lockType: LockType.write);
+      lockScopeFuture(fn, lockType: LockType.write);
 
   Future<void> enterRead() async {
     while (_isWritingOrWaitingToWrite) {
@@ -65,10 +65,10 @@ class ReaderWriterLock {
   }
 
   Future<void> enterWrite() async {
-    final _oldBool = _isWritingOrWaitingToWrite;
+    final bool oldBool = _isWritingOrWaitingToWrite;
     _isWritingOrWaitingToWrite = true;
-    if (_oldBool || _readCount != 0) {
-      final completer = Completer();
+    if (oldBool || _readCount != 0) {
+      final Completer<void> completer = Completer<void>();
       _writeQueue.add(completer);
       await completer.future;
     }
@@ -79,9 +79,9 @@ class ReaderWriterLock {
       _writeQueue.removeAt(0).complete();
     } else {
       _isWritingOrWaitingToWrite = false;
-      final _oldCompleter = _readAfterWrite;
-      _readAfterWrite = Completer();
-      _oldCompleter.complete();
+      final Completer<void> oldCompleter = _readAfterWrite;
+      _readAfterWrite = Completer<void>();
+      oldCompleter.complete();
     }
   }
 }

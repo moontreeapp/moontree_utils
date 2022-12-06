@@ -23,7 +23,7 @@ extension StringCapitalizationExtension on String {
 
 extension StringTrimExtension on String {
   String trimPattern(String pattern) {
-    var tempString = this;
+    String tempString = this;
     if (startsWith(pattern)) {
       tempString = substring(pattern.length, tempString.length);
     }
@@ -35,9 +35,7 @@ extension StringTrimExtension on String {
 
   String cutOutMiddle({int length = 6}) {
     if (this.length > length * 2) {
-      return substring(0, length) +
-          '...' +
-          substring(this.length - length, this.length);
+      return '${substring(0, length)}...${substring(this.length - length, this.length)}';
     }
     return this;
   }
@@ -52,19 +50,45 @@ extension StringBytesExtension on String {
   String get hexToUTF8 => utf8.decode(hexBytes);
   String get hexToAscii => List.generate(
         length ~/ 2,
-        (i) => String.fromCharCode(
+        (int i) => String.fromCharCode(
             int.parse(substring(i * 2, (i * 2) + 2), radix: 16)),
       ).join();
   Uint8List get base58Decode => base58.decode(this);
 }
 
 extension StringCharactersExtension on String {
-  List get characters => split('');
+  List<String> get characters => split('');
 }
 
 extension StringNumericExtension on String {
-  int toInt() {
-    var text = removeChars(
+  /// assumes the string is an amount
+  int toSats([int divisibility = 8]) {
+    String x = trim();
+    if (x == '' || x == '.') {
+      return 0;
+    }
+    if (!x.contains('.')) {
+      x = '$x.';
+    }
+    final List<String> s = x.split('.');
+    if (s.length > 2) {
+      return 0;
+    }
+    if (s.last.length > divisibility) {
+      s[1] = s[1].substring(0, divisibility);
+    } else if (s.last.length < divisibility) {
+      s[1] = s[1] + '0' * (divisibility - s.last.length);
+    }
+    final String textSats = '${s.first}${s.last}';
+    if (textSats.length > 19) {
+      return int.parse(textSats.substring(0, 19));
+    }
+    return int.parse(textSats);
+  }
+
+  /// assumes the string is already in sats.
+  int asSatsInt() {
+    String text = removeChars(
       split('.').first,
       chars: strings.punctuation + strings.whiteSapce,
     );
@@ -89,6 +113,6 @@ extension StringNumericExtension on String {
   }
 
   double toDouble() {
-    return double.parse(trim().split(',').join(''));
+    return double.parse(trim().split(',').join());
   }
 }
