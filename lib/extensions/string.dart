@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:convert/convert.dart';
 import 'package:bs58/bs58.dart';
 
+import 'package:moontree_utils/src/hex.dart' as hexx;
 import 'package:moontree_utils/src/string.dart' as strings;
 import 'package:moontree_utils/src/transform.dart';
 
@@ -54,6 +55,7 @@ extension StringBytesExtension on String {
             int.parse(substring(i * 2, (i * 2) + 2), radix: 16)),
       ).join();
   Uint8List get base58Decode => base58.decode(this);
+  Uint8List get hexDecode => hexx.decode(this);
 }
 
 extension StringCharactersExtension on String {
