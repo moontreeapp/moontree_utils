@@ -10,6 +10,8 @@ String encode(Uint8List decoded) => hex.encode(decoded);
 
 String toHexString(String string) => hex.encode(string.codeUnits);
 
+Uint8List toSerialized(String tx) => Uint8List.fromList(hex.decode(tx));
+
 String hexToAscii(String hexString) => List<String>.generate(
       hexString.length ~/ 2,
       (int i) => String.fromCharCode(
