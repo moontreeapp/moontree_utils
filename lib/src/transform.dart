@@ -5,9 +5,6 @@ import 'package:moontree_utils/src/string.dart';
 
 int invertDivisibility(int divisibility) => (16 + 1) % (divisibility + 8 + 1);
 
-double satToAmount(int x) => x / 100000000;
-int amountToSat(double x) => (x * 100000000).floor();
-
 String removeChars(
   String text, {
   String? chars,

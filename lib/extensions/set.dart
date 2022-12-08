@@ -6,7 +6,7 @@ extension RandomChoiceOnSetExtension on Set<dynamic> {
 
   /// returns a number from the set that is in the bottom half
   dynamic get randomChoiceBottomHalf {
-    var x = toList();
+    final List<dynamic> x = toList();
     x.sort();
     return x[math.Random().nextInt(length ~/ 2)];
   }

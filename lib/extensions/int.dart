@@ -1,4 +1,3 @@
-import 'package:moontree_utils/src/transform.dart';
 import 'package:moontree_utils/extensions/extensions.dart';
 
 extension IntReadableNumericExtension on int {
@@ -17,6 +16,4 @@ extension IntReadableNumericExtension on int {
     }
     return ret;
   }
-
-  double toAmount() => satToAmount(this);
 }

@@ -11,7 +11,7 @@ void main() {
     final ReaderWriterLock lock = ReaderWriterLock();
     final Random rand = Random();
 
-    read_1() async {
+    Future<void> read_1() async {
       await lock.enterRead();
       print('1 Enter Read');
       await Future<void>.delayed(
@@ -20,7 +20,7 @@ void main() {
       await lock.exitRead();
     }
 
-    read_2() async {
+    Future<void> read_2() async {
       await lock.enterRead();
       print('2 Enter Read');
       await Future<void>.delayed(
@@ -29,7 +29,7 @@ void main() {
       await lock.exitRead();
     }
 
-    write_1() async {
+    Future<void> write_1() async {
       await lock.enterWrite();
       print('1 Enter Write');
       await Future<void>.delayed(
@@ -38,7 +38,7 @@ void main() {
       await lock.exitWrite();
     }
 
-    write_2() async {
+    Future<void> write_2() async {
       await lock.enterWrite();
       print('2 Enter Write');
       await Future<void>.delayed(
@@ -47,11 +47,11 @@ void main() {
       await lock.exitWrite();
     }
 
-    Future<void> w_1 = write_1();
-    Future<void> r_1 = read_1();
-    Future<void> w_2 = write_2();
-    Future<void> r_2 = read_2();
+    final Future<void> w_1 = write_1();
+    final Future<void> r_1 = read_1();
+    final Future<void> w_2 = write_2();
+    final Future<void> r_2 = read_2();
 
-    await Future.wait([r_1, r_2, w_1, w_2]);
+    await Future.wait(<Future<void>>[r_1, r_2, w_1, w_2]);
   });
 }

@@ -1,11 +1,11 @@
 class CustomException implements Exception {
+  CustomException([this._prefix, this._message]);
   final String? _prefix;
   final String? _message;
 
-  CustomException([this._prefix, this._message]);
-
   @override
-  String toString() => [_prefix, _message].whereType<String>().join(': ');
+  String toString() =>
+      <String?>[_prefix, _message].whereType<String>().join(': ');
 }
 
 class AlreadyListening extends CustomException {

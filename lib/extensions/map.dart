@@ -13,8 +13,8 @@ extension SetOrUpdateOnMapExtension<TK, TV> on Map<TK, TV> {
         return;
       }
     }
-    if (value != null) {
-      this[key] = value(this[key]!);
+    if (value != null && containsKey(key)) {
+      this[key] = value(this[key] as TV);
     }
   }
 }

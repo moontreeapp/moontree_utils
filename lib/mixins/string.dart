@@ -12,7 +12,7 @@ String toStringOverride(
   List<dynamic> items,
   List<String> names,
 ) =>
-    '${object.runtimeType.toString()}(${[
+    '${object.runtimeType.toString()}(${<String>[
       for (final List<dynamic> z in zip(<List<dynamic>>[names, items]))
         '${z[0]}: ${z[1]}'
     ].join(', ')})';

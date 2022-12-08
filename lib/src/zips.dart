@@ -1,5 +1,7 @@
 Map<dynamic, dynamic> zipMap(List<dynamic> names, List<dynamic> values) =>
-    {for (int i = 0; i < names.length; i += 1) names[i]: values[i]};
+    <dynamic, dynamic>{
+      for (int i = 0; i < names.length; i += 1) names[i]: values[i]
+    };
 
 List<dynamic> zipIterable(Iterable<List<dynamic>> lists) => <dynamic>[
       for (int i = 0; i < lists.first.length; i += 1)

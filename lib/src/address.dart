@@ -12,7 +12,7 @@ bool assetCondition(String asset) =>
     !asset.contains('_.') &&
     !asset.endsWith('_') &&
     !asset.endsWith('.') &&
-    !['RVN', 'RAVEN', 'RAVENCOIN'].contains(asset) &&
+    !<String>['RVN', 'RAVEN', 'RAVENCOIN'].contains(asset) &&
     asset.contains(RegExp(assetBaseRegex));
 
 /// unused but meant to verify a whole asset string such as:
@@ -22,7 +22,7 @@ bool wholeAssetCondition(String asset) =>
     asset
         .split('/')
         .getRange(1, asset.split('/').length)
-        .every((element) => subAssetCondition(element));
+        .every((String element) => subAssetCondition(element));
 
 /// unused but meant to verify a sub asset string such as:
 /// 'RAVENHEAD24#PaintedRVN5'
@@ -41,7 +41,7 @@ bool subAssetCondition(String asset) =>
     !asset.endsWith('_') &&
     !asset.endsWith('.') &&
     asset.length >= 3 &&
-    !['RVN', 'RAVEN', 'RAVENCOIN'].contains(asset) &&
+    !<String>['RVN', 'RAVEN', 'RAVENCOIN'].contains(asset) &&
     asset.contains(RegExp(subAssetBaseRegex));
 
 /// not complete. todo

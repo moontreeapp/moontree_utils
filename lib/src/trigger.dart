@@ -5,9 +5,9 @@ typedef Listener<T> = void Function(T event);
 typedef Check<T> = bool Function(T event);
 
 abstract class Trigger {
-  final Map<String, StreamSubscription> listeners = {};
-
   Trigger();
+  final Map<String, StreamSubscription<dynamic>> listeners =
+      <String, StreamSubscription<dynamic>>{};
 
   Future<void> when<T>({
     required Stream<T> thereIsA,
@@ -22,26 +22,25 @@ abstract class Trigger {
     }
     if (!listeners.keys.contains(key)) {
       listeners[key] = thereIsA
-          .listen(andIf == null ? doThis : (e) => andIf(e) ? doThis : () {});
+          .listen(andIf == null ? doThis : (T e) => andIf(e) ? doThis : () {});
     } else {
       throw AlreadyListening('$key already listening');
     }
   }
 
   Future<void> deinit() async {
-    for (var listener in listeners.values) {
+    for (final StreamSubscription<dynamic> listener in listeners.values) {
       await listener.cancel();
     }
     listeners.clear();
   }
 
   Future<void> deinitKeys(List<String> keys) async {
-    for (var listener in keys) {
-      print('removing $listener');
+    for (final String listener in keys) {
       await listeners[listener]?.cancel();
       listeners.remove(listener);
     }
   }
 
-  Future<void> deinitKey(String key) async => deinitKeys([key]);
+  Future<void> deinitKey(String key) async => deinitKeys(<String>[key]);
 }

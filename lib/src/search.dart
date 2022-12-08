@@ -4,9 +4,9 @@ int binaryClosest({
   required List<dynamic> list,
   required dynamic value,
   Nearest type = Nearest.closest,
-  Comparator? comp,
+  Comparator<dynamic>? comp,
 }) {
-  comp = comp ?? (a, b) => (a - b) as int;
+  comp = comp ?? (dynamic a, dynamic b) => (a as int) - (b as int);
 
   // Quick returns
   if (list.isEmpty) {
@@ -28,8 +28,14 @@ int binaryClosest({
   }
 
   // Modified binary search
-  int binarySearchInternal(List list, Comparator comp, dynamic value,
-      Nearest type, int start, int end) {
+  int binarySearchInternal(
+    List<dynamic> list,
+    Comparator<dynamic> comp,
+    dynamic value,
+    Nearest type,
+    int start,
+    int end,
+  ) {
     int i = 0;
     int j = end;
     int mid = 0;
@@ -60,7 +66,6 @@ int binaryClosest({
             case Nearest.ceil:
               return mid + 1;
             case Nearest.closest:
-            default:
               return comp(value, list[mid + 1]).abs() <
                       comp(value, list[mid]).abs()
                   ? mid + 1
@@ -71,7 +76,7 @@ int binaryClosest({
       }
     }
 
-    int midComp = comp(value, mid);
+    final int midComp = comp(value, mid);
     if (midComp < 0) {
       if (mid > 0) {
         switch (type) {
@@ -80,7 +85,6 @@ int binaryClosest({
           case Nearest.ceil:
             return mid;
           case Nearest.closest:
-          default:
             return comp(value, list[mid - 1]).abs() <
                     comp(value, list[mid]).abs()
                 ? mid - 1
@@ -101,7 +105,6 @@ int binaryClosest({
           case Nearest.ceil:
             return mid + 1;
           case Nearest.closest:
-          default:
             return comp(value, list[mid + 1]).abs() <
                     comp(value, list[mid]).abs()
                 ? mid + 1
@@ -122,11 +125,11 @@ int binaryClosest({
 }
 
 int binarySearch({
-  required List list,
+  required List<dynamic> list,
   required dynamic value,
-  Comparator? comp,
+  Comparator<dynamic>? comp,
 }) {
-  comp = comp ?? (a, b) => (a - b) as int;
+  comp = comp ?? (dynamic a, dynamic b) => (a as int) - (b as int);
   // Quick returns
   if (list.isEmpty) {
     return -1;
@@ -139,7 +142,12 @@ int binarySearch({
   }
 
   int binarySearchInternal(
-      List list, Comparator comp, dynamic value, int start, int end) {
+    List<dynamic> list,
+    Comparator<dynamic> comp,
+    dynamic value,
+    int start,
+    int end,
+  ) {
     if (end >= start) {
       final int mid = ((start + end) / 2).floor();
       if (comp(value, list[mid]) == 0) {
@@ -157,11 +165,11 @@ int binarySearch({
 }
 
 bool binaryRemove({
-  required List list,
+  required List<dynamic> list,
   required dynamic value,
-  Comparator? comp,
+  Comparator<dynamic>? comp,
 }) {
-  int found = binarySearch(
+  final int found = binarySearch(
     list: list,
     value: value,
     comp: comp,
@@ -174,13 +182,13 @@ bool binaryRemove({
 }
 
 bool binaryInsert({
-  required List list,
+  required List<dynamic> list,
   required dynamic value,
-  Comparator? comp,
+  Comparator<dynamic>? comp,
   bool doubleAdd = false,
 }) {
-  comp = comp ?? (a, b) => (a - b) as int;
-  int index =
+  comp = comp ?? (dynamic a, dynamic b) => (a as int) - (b as int);
+  final int index =
       binaryClosest(list: list, value: value, type: Nearest.ceil, comp: comp);
   if (index >= 0) {
     if (!doubleAdd && comp(value, list[index]) == 0) {
