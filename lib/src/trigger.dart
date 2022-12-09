@@ -22,7 +22,7 @@ abstract class Trigger {
     }
     if (!listeners.keys.contains(key)) {
       listeners[key] = thereIsA
-          .listen(andIf == null ? doThis : (T e) => andIf(e) ? doThis : () {});
+          .listen(andIf == null ? doThis : (T v) => andIf(v) ? doThis : () {});
     } else {
       throw AlreadyListening('$key already listening');
     }

@@ -5,5 +5,6 @@ export 'list.dart';
 export 'map.dart';
 export 'object.dart';
 export 'set.dart';
+export 'stream.dart';
 export 'string.dart';
 export 'uint8list.dart';
