@@ -16,7 +16,7 @@ abstract class Trigger {
     String? key,
     bool autoDeinit = false,
   }) async {
-    key ??= thereIsA.hashCode.toString();
+    key ??= determineKey(thereIsA);
     if (autoDeinit) {
       await deinitKey(key);
     }
@@ -27,6 +27,20 @@ abstract class Trigger {
       throw AlreadyListening('$key already listening');
     }
   }
+
+  String determineKey<T>(Stream<T> stream) =>
+      () {
+        /// automatically use name from ReadableIdentifierExtension
+        try {
+          return (stream as dynamic).name;
+        } on NoSuchMethodError {
+          return null;
+        } catch (e) {
+          print('Unexpected Error: $e');
+        }
+        return null;
+      }() ??
+      stream.hashCode.toString();
 
   Future<void> deinit() async {
     for (final StreamSubscription<dynamic> listener in listeners.values) {
