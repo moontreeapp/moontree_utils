@@ -56,6 +56,11 @@ extension StringBytesExtension on String {
       ).join();
   Uint8List get base58Decode => base58.decode(this);
   Uint8List get hexDecode => hexx.decode(this);
+
+  ///
+  //ByteData get asByteData => Uint8List.fromList(this List<int>).buffer.asByteData();
+  //ByteData get addressToH160 => Uint8List.fromList(this List<int>).buffer.asByteData();
+  //String get h160ToAddress => Uint8List.fromList(this ByteData).buffer.asByteData();
 }
 
 extension StringCharactersExtension on String {
