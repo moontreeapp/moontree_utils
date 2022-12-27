@@ -1,3 +1,9 @@
+import 'dart:typed_data';
+
+import 'package:moontree_utils/extensions/string.dart';
+import 'package:moontree_utils/extensions/uint8list.dart';
+import 'package:moontree_utils/src/zips.dart';
+
 String whiteSapce = '  ';
 String punctuationProblematic = '`?:;"\'\\\$|/<>';
 String punctuationNonProblematic = '~.,-_';
@@ -21,3 +27,12 @@ String verifierStringAllowed = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ._ (#&|!)';
 String assetTypeIdentifiers = r'[/$#~!]';
 String ravenBase58Regex([bool mainnet = true]) =>
     r'^' + (mainnet ? 'R' : '(m|n)') + r'(' + base58Regex + r'{33})$';
+
+ByteData base58ToH160Checked(String address) {
+  final raw = address.base58Decode;
+  final checkSum = raw.sublist(raw.length - 4).dsha256.sublist(0, 4);
+  if (zipIterable([checkSum, raw]).any((element) => element[0] != element[1])) {
+    throw Exception('Checksum mismatch');
+  }
+  return raw.buffer.asByteData(1, 0x14);
+}

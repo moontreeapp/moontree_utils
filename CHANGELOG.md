@@ -1,3 +1,7 @@
+## 1.0.13
+
+- added chains
+
 ## 1.0.2
 
 - added .isIn sugar syntax
