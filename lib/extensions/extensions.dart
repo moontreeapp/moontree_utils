@@ -1,3 +1,4 @@
+export 'bytedata.dart';
 export 'double.dart';
 export 'int.dart';
 export 'iterable.dart';
