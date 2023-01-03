@@ -6,8 +6,9 @@ extension DoubleReadableNumericExtension on double {
       toString().split('.').first.asSatsInt().toCommaString() +
       (toString().split('.').last == '0'
           ? ''
-          : Decimal.parse('.${toString().split('.').last}')
-              .toString()
-              .split('.')
-              .last);
+          : '.' +
+              Decimal.parse('.${toString().split('.').last}')
+                  .toString()
+                  .split('.')
+                  .last);
 }
