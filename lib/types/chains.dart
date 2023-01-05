@@ -10,6 +10,7 @@ class Chaindata {
     'evrmore_mainnet': {'p2pkhPrefix': 33, 'p2shPrefix': 92},
     'evrmore_testnet': {'p2pkhPrefix': 111, 'p2shPrefix': 196},
   };
+  factory Chaindata.from(String name) => getChaindataFor(name);
 
   final String name;
   final String? symbol;
@@ -1063,3 +1064,17 @@ final evrmoreTestnetChaindata = Chaindata('evrmore_testnet', 111, 196, 18819,
         issueSubQualifier: 10000000000,
         issueRestricted: 150000000000,
         addTag: 10000000));
+
+Chaindata getChaindataFor(String chain) {
+  switch (chain) {
+    case 'ravencoin_mainnet':
+      return ravencoinMainnetChaindata;
+    case 'ravencoin_testnet':
+      return ravencoinTestnetChaindata;
+    case 'evrmore_mainnet':
+      return evrmoreMainnetChaindata;
+    case 'evrmore_testnet':
+      return evrmoreTestnetChaindata;
+  }
+  return ravencoinMainnetChaindata;
+}
