@@ -54,17 +54,15 @@ extension StringBytesExtension on String {
         (int i) => String.fromCharCode(
             int.parse(substring(i * 2, (i * 2) + 2), radix: 16)),
       ).join();
-  Uint8List get base58Decode => bs58.base58.decode(this);
   Uint8List get hexDecode => hexx.decode(this);
   ByteData get hexAddressToH160 =>
       Uint8List.fromList(hex.decode(this)).buffer.asByteData(1, 0x14);
   ByteData get addressToH160 =>
       Uint8List.fromList(bs58.base58.decode(this)).buffer.asByteData(1, 0x14);
-
-  ///
-  //ByteData get asByteData => Uint8List.fromList(this List<int>).buffer.asByteData();
-  //ByteData get addressToH160 => Uint8List.fromList(this List<int>).buffer.asByteData();
-  //String get h160ToAddress => Uint8List.fromList(this ByteData).buffer.asByteData();
+  Uint8List get base58Decode => bs58.base58.decode(this);
+  Uint8List get hexToUint8List => Uint8List.fromList(hex.decode(this));
+  ByteData get base58ToByteData => base58Decode.buffer.asByteData();
+  ByteData get hexToByteData => hexToUint8List.buffer.asByteData();
 }
 
 extension StringCharactersExtension on String {
