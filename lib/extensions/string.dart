@@ -59,6 +59,8 @@ extension StringBytesExtension on String {
       Uint8List.fromList(hex.decode(this)).buffer.asByteData(1, 0x14);
   ByteData get addressToH160 =>
       Uint8List.fromList(bs58.base58.decode(this)).buffer.asByteData(1, 0x14);
+  String get addressToH160String =>
+      hex.encode(addressToH160.buffer.asUint8List());
   Uint8List get base58Decode => bs58.base58.decode(this);
   Uint8List get hexToUint8List => Uint8List.fromList(hex.decode(this));
   ByteData get base58ToByteData => base58Decode.buffer.asByteData();
