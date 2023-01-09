@@ -3,7 +3,7 @@ import 'package:bs58/bs58.dart';
 import 'package:moontree_utils/extensions/uint8list.dart';
 
 class Chaindata {
-  static final Map<String, Chaindata> chains = {};
+  static final Map<String, Chaindata> nameToChainMap = {};
   static final Map<String, Map<String, int>> addressType = {
     'ravencoin_mainnet': {'p2pkhPrefix': 60, 'p2shPrefix': 122},
     'ravencoin_testnet': {'p2pkhPrefix': 111, 'p2shPrefix': 196},
@@ -42,7 +42,7 @@ class Chaindata {
     required this.burnH160s,
     required this.burnAmounts,
   }) {
-    chains[name] = this;
+    nameToChainMap[name] = this;
   }
 
   Uint8List txidUniquifier(Uint8List raw) {
