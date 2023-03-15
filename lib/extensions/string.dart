@@ -48,21 +48,23 @@ extension StringBytesExtension on String {
   Uint8List get hexBytes => Uint8List.fromList(hex.decode(this));
   Uint8List get hexBytesForScript =>
       Uint8List.fromList(<int>[0x54, 0x20] + hex.decode(this));
-  String get hexToUTF8 => utf8.decode(hexBytes);
+  String get utf8ToHex =>
+      utf8.encode(this).map((e) => e.toRadixString(16)).join();
+  String get hexToUtf8 => utf8.decode(hexBytes);
   String get hexToAscii => List<String>.generate(
         length ~/ 2,
         (int i) => String.fromCharCode(
             int.parse(substring(i * 2, (i * 2) + 2), radix: 16)),
       ).join();
   Uint8List get hexDecode => hexx.decode(this);
-  ByteData get hexAddressToH160 =>
-      Uint8List.fromList(hex.decode(this)).buffer.asByteData(1, 0x14);
-  ByteData get addressToH160 =>
-      Uint8List.fromList(bs58.base58.decode(this)).buffer.asByteData(1, 0x14);
+  ByteData get hexAddressToH160 => hexToUint8List.buffer.asByteData(1, 0x14);
+  ByteData get addressToH160 => base58ToUint8List.buffer.asByteData(1, 0x14);
   String get addressToH160String =>
       hex.encode(addressToH160.buffer.asUint8List());
   Uint8List get base58Decode => bs58.base58.decode(this);
   Uint8List get hexToUint8List => Uint8List.fromList(hex.decode(this));
+  Uint8List get base58ToUint8List =>
+      Uint8List.fromList(bs58.base58.decode(this));
   ByteData get base58ToByteData => base58Decode.buffer.asByteData();
   ByteData get hexToByteData => hexToUint8List.buffer.asByteData();
 }
