@@ -1,3 +1,7 @@
+## 1.0.25
+
+- added lots of helper functions around converting data
+
 ## 1.0.13
 
 - added chains
