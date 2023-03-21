@@ -12,3 +12,4 @@ export 'string.dart';
 export 'transform.dart';
 export 'trigger.dart';
 export 'zips.dart';
+export 'script/script.dart';
