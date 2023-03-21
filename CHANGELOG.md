@@ -1,3 +1,7 @@
+## 1.0.27
+
+- added parsing chain script functionality
+
 ## 1.0.25
 
 - added lots of helper functions around converting data
