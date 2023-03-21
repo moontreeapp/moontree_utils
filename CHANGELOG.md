@@ -1,4 +1,4 @@
-## 1.0.27
+## 1.0.29
 
 - added parsing chain script functionality
 
