@@ -5,6 +5,7 @@ removeTrailingZeros(String n) {
 }
 
 extension DoubleReadableNumericExtension on double {
+  /// poorly named - should be toCommaString probably.
   String toSatsCommaString() =>
       toString().split('.').first.asSatsInt().toCommaString() +
       (toString().split('.').last == '0'
