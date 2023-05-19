@@ -30,7 +30,7 @@ extension DoubleReadableNumericExtension on double {
       }
     }
     if (fullStr.contains('.')) {
-      return '${ret}.${strs.last}';
+      return '$ret.${strs.last}';
     } else {
       return ret;
     }
