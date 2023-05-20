@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 import 'package:bs58/bs58.dart';
 import 'package:moontree_utils/extensions/uint8list.dart';
+import 'package:moontree_utils/src/script/util.dart' show h160ToAddress;
 
 class Chaindata {
   static final Map<String, Chaindata> nameToChainMap = {};
@@ -57,6 +58,11 @@ class Chaindata {
 
   @override
   int get hashCode => name.hashCode;
+
+  List<String> burnAddresses({bool isP2sh = false}) => [
+        for (final h160 in burnH160s.h160s)
+          h160ToAddress(h160, isP2sh ? p2shPrefix : p2pkhPrefix)
+      ];
 }
 
 class BurnH160 {
@@ -91,6 +97,19 @@ class BurnH160 {
     //return [for (final x in snipped) x.toRadixString(16)].join();
     return snipped.toHex();
   }
+
+  List<Uint8List> get h160s => [
+        issueMain,
+        reissue,
+        issueSub,
+        issueUnique,
+        issueMessage,
+        issueQualifier,
+        issueSubQualifier,
+        issueRestricted,
+        addTag,
+        burn,
+      ];
 }
 
 class BurnAmount {

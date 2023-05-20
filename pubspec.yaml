@@ -1,6 +1,6 @@
 name: moontree_utils
 description: generic dart utilities shared across moontree repos
-version: 1.1.1
+version: 1.1.2
 homepage: https://github.com/moontreeapp/moontree_utils
 
 environment:

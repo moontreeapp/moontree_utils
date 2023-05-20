@@ -1,3 +1,11 @@
+## 1.1.2
+
+- added burnAddresses method
+
+## 1.1.1
+
+- update to the dart 3.0
+
 ## 1.0.29
 
 - added parsing chain script functionality
