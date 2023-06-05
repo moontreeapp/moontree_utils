@@ -1,3 +1,7 @@
+## 1.1.
+
+- fixed enumeratedTuple for lists
+
 ## 1.1.2
 
 - added burnAddresses method
