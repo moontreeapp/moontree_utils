@@ -128,4 +128,26 @@ extension StringNumericExtension on String {
   double toDouble() {
     return double.parse(trim().split(',').join());
   }
+
+  /// takes a numeric string and inserts commas
+  String toCommaString({String comma = ','}) {
+    final List strs = split('.');
+    final String str = strs[0];
+    int i = 0;
+    String ret = '';
+    for (final String c in str.characters.reversed) {
+      if (i == 3) {
+        ret = '$c$comma$ret';
+        i = 1;
+      } else {
+        ret = '$c$ret';
+        i += 1;
+      }
+    }
+    if (contains('.')) {
+      return '$ret.${strs.last}';
+    } else {
+      return ret;
+    }
+  }
 }

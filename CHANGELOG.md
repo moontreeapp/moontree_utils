@@ -1,4 +1,8 @@
-## 1.1.
+## 1.1.4
+
+- added comma strings for strings
+
+## 1.1.3
 
 - fixed enumeratedTuple for lists
 
