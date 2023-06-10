@@ -131,7 +131,7 @@ extension StringNumericExtension on String {
 
   /// takes a numeric string and inserts commas
   String toCommaString({String comma = ','}) {
-    final List strs = split('.');
+    final List strs = replaceAll(',', '').split('.');
     final String str = strs[0];
     int i = 0;
     String ret = '';
