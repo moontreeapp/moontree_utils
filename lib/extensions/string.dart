@@ -69,6 +69,12 @@ extension StringBytesExtension on String {
   ByteData get hexToByteData => hexToUint8List.buffer.asByteData();
 }
 
+extension StringHexExtension on String {
+  /// use .utf8ToHex first
+  ByteData get toByteData => toUint8List.buffer.asByteData();
+  Uint8List get toUint8List => Uint8List.fromList(hex.decode(this));
+}
+
 extension StringCharactersExtension on String {
   List<String> get characters => split('');
 }

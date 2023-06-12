@@ -1,3 +1,7 @@
+## 1.1.6
+
+- added toByteData
+
 ## 1.1.4
 
 - added comma strings for strings
