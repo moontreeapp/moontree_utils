@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 import 'package:convert/convert.dart';
 import 'package:bs58/bs58.dart' as bs58;
+import 'package:base32/base32.dart' as bs32;
 
 import 'package:moontree_utils/src/hex.dart' as hexx;
 import 'package:moontree_utils/src/string.dart' as strings;
@@ -62,6 +63,7 @@ extension StringBytesExtension on String {
   String get addressToH160String =>
       hex.encode(addressToH160.buffer.asUint8List());
   Uint8List get base58Decode => bs58.base58.decode(this);
+  Uint8List get base32Decode => bs32.base32.decode(this);
   Uint8List get hexToUint8List => Uint8List.fromList(hex.decode(this));
   Uint8List get base58ToUint8List =>
       Uint8List.fromList(bs58.base58.decode(this));

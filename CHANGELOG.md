@@ -1,3 +1,7 @@
+## 1.1.7
+
+- added base32 decode
+
 ## 1.1.6
 
 - added toByteData
